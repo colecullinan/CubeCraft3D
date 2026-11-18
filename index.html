@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f3ee">
+  <title>CubeCraft — 3D puzzle lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+    { "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+    } }
+  </script>
+  <script type="module" src="script.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="CubeCraft home"><span class="brand-mark">C</span><span>cube<span class="brand-light">craft</span></span></a>
+    <div class="topbar-right"><span class="status-dot"></span><span>PUZZLE LAB <i> / </i> COLE CULLINAN &amp; SIERRA GREEN</span><div class="theme-switch" role="group" aria-label="Color theme"><button class="theme-choice" id="themeMoon" type="button" aria-label="Use dark theme" aria-pressed="false">☾</button><span class="theme-slash" aria-hidden="true">/</span><button class="theme-choice" id="themeSun" type="button" aria-label="Use light theme" aria-pressed="true">☀</button></div></div>
+  </header>
+  <main class="layout">
+    <section class="intro">
+      <div class="eyebrow"><span class="eyebrow-line"></span> MAKE IT. TURN IT. SOLVE IT.</div>
+      <h1>A little cube.<br><em>A lot of possibilities.</em></h1>
+      <p class="lede">Build a 3D cube puzzle, tune the challenge, and explore your design from every angle.</p>
+    </section>
+    <section class="workspace" aria-label="Puzzle builder">
+      <aside class="controls panel">
+        <div class="panel-heading"><div><span class="section-index">01</span><h2>Design your puzzle</h2></div><span class="live-tag"><span></span> LIVE</span></div>
+        <div class="field">
+          <div class="field-label"><label for="gridSize">Puzzle size</label><span class="field-value" id="sizeValue">3 × 3 × 3</span></div>
+          <input id="gridSize" type="range" min="2" max="5" value="3" step="1"><div class="range-ends"><span>2 × 2 × 2</span><span>5 × 5 × 5</span></div>
+        </div>
+        <div class="field">
+          <div class="field-label"><label for="pieceSize">Piece size</label><span class="field-value"><span id="pieceValue">15</span> <small>mm / cube</small></span></div>
+          <input id="pieceSize" type="range" min="8" max="30" value="15" step="1"><div class="range-ends"><span>8 mm</span><span>30 mm</span></div>
+        </div>
+        <div class="field difficulty-field">
+          <div class="field-label"><label>Difficulty</label><span class="field-value" id="difficultyValue">Balanced</span></div>
+          <div class="segmented" role="group" aria-label="Puzzle difficulty">
+            <button type="button" data-difficulty="easy">Easy</button><button type="button" class="selected" data-difficulty="balanced">Balanced</button><button type="button" data-difficulty="hard">Hard</button>
+          </div>
+          <p class="hint" id="difficultyHint">A balanced mix of piece shapes to explore.</p>
+        </div>
+        <div class="summary"><span class="summary-icon">✳</span><div><strong id="summaryTitle">Your puzzle</strong><span id="summaryText">27 blocks · 6 color groups · 45 mm across</span></div></div>
+        <button class="primary-button" id="generateButton"><span>↻</span> Generate a new puzzle</button>
+        <button class="download-button" id="downloadButton"><span>↓</span> Export pieces as STL <small>ZIP</small></button>
+        <p class="fine-print">STL files are prototype geometry for experimentation. Fit, printability, and mechanical interlocking have not been validated.</p>
+      </aside>
+      <section class="preview panel">
+        <div class="preview-head"><div><span class="section-index">02</span><h2>3D preview</h2></div><span class="drag-note"><span>⤧</span> DRAG TO ROTATE</span></div>
+        <div class="canvas-wrap" id="canvasWrap"><div class="canvas-grid"></div><div class="loading" id="loading">Preparing your puzzle…</div><div class="view-label">ISOMETRIC VIEW <span>•</span> <b id="dimensions">45 × 45 × 45 mm</b></div><button class="reset-view" id="resetView" aria-label="Reset camera view" title="Reset camera">↺</button></div>
+        <div class="preview-foot"><div class="legend-label">PIECES</div><div class="legend" id="legend"></div><div class="preview-count" id="previewCount">06 <span>PIECES</span></div></div>
+      </section>
+    </section>
+    <footer><span>DESIGNED FOR THE CURIOUS.</span><span>© CUBECRAFT PUZZLE LAB</span></footer>
+  </main>
+</body>
+</html>
+
